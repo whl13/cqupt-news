@@ -15,17 +15,18 @@
         >
       </el-row>
     </el-card>
-    <el-card style="max-width: 100%">
+    <el-card style="max-width: 100%; height: 600px">
       <template #header>
         <div class="card-header">
           <span>公司产品</span>
         </div>
       </template>
-      <el-carousel :interval="5000" arrow="always">
+      <el-carousel :interval="5000" arrow="always" height="600px">
         <el-carousel-item v-for="item in loopList" :key="item._id">
           <div
+            class="productitem"
             :style="{
-              background: `url(http://localhost:3000${item.cover}) center center / cover no-repeat`,
+              backgroundImage: `url(http://localhost:3000${item.cover})`,
             }"
           >
             <h3 text="2xl" justify="center">{{ item.title }}</h3>
@@ -65,19 +66,17 @@ const getProductlist = async () => {
     line-height: 60px;
   }
 }
+
+.productitem {
+  background-size: 100% 100%;
+  height: 100%;
+}
+
 .el-carousel__item h3 {
-  color: #475669;
+  color: #fff;
   opacity: 0.75;
-  line-height: 300px;
+  line-height: 600px;
   margin: 0;
   text-align: center;
-}
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
 }
 </style>
