@@ -8,7 +8,7 @@ import newsEdit from '@/views/news-manage/newsEdit.vue'
 import productAdd from '@/views/product-manage/productAdd.vue'
 import productList from '@/views/product-manage/productList.vue'
 import notFound from '@/views/notFound/notFound.vue'
-import ProductEdit from '@/views/product-manage/productEdit.vue'
+import productEdit from '@/views/product-manage/productEdit.vue'
 const routes = [
     {
         path: '/index',
@@ -19,38 +19,52 @@ const routes = [
         component: center
     },
     {
-        path: '/user-manage/useradd',
-        component: userAdd,
+        path: '/user-manage',
+        children: [
+            {
+                path: 'useradd',
+                component: userAdd,
+            },
+            {
+                path: 'userlist',
+                component: userList,
+            }
+        ],
         requireAdmin: true
     },
     {
-        path: '/user-manage/userlist',
-        component: userList,
-        requireAdmin: true
+        path: '/news-manage',
+        children: [
+            {
+                path: 'newsadd',
+                component: newsAdd
+            },
+            {
+                path: 'newslist',
+                component: newsList
+            },
+            {
+                path: 'newsedit/:id',
+                component: newsEdit
+            }
+        ]
     },
     {
-        path: '/news-manage/newsadd',
-        component: newsAdd
-    },
-    {
-        path: '/news-manage/newslist',
-        component: newsList
-    },
-    {
-        path: '/news-manage/newsedit/:id',
-        component: newsEdit
-    },
-    {
-        path: '/product-manage/productadd',
-        component: productAdd
-    },
-    {
-        path: '/product-manage/productlist',
-        component: productList
-    },
-    {
-        path: '/product-manage/productedit/:id',
-        component: ProductEdit
+        path: '/product-manage',
+        children: [
+            {
+                path: 'productadd',
+                component: productAdd
+            },
+            {
+                path: 'productlist',
+                component: productList
+            },
+            {
+                path: 'productedit/:id',
+                component: productEdit
+            }
+        ]
     },
     {
         path: '/',

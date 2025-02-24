@@ -18,6 +18,7 @@
         :rules="loginRules"
         label-width="auto"
         class="loginForm-body"
+        @keyup.enter="submitForm"
       >
         <el-form-item label="用户名" prop="username">
           <el-input v-model="loginForm.username" autocomplete="off" />

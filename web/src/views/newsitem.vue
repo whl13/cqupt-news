@@ -44,7 +44,6 @@ const newsDate = ref({});
 const topList = ref([]);
 const stop = watchEffect(async () => {
   if (!route.params.id) return;
-  console.log(route.params.id);
   const res = await axios.get(`/webapi/news/getnewslist/${route.params.id}`);
   const res2 = await axios.get(`/webapi/news/gettoplist?limit=4`);
   newsDate.value = res.data.data[0];
